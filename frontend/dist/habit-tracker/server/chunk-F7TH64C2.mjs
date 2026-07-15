@@ -1,2 +1,0 @@
-import './polyfills.server.mjs';
-import{Ra as t,Sa as n,cb as o,za as a}from"./chunk-YSL7JL3J.mjs";import"./chunk-KYQQYI4M.mjs";var s=class i{static \u0275fac=function(e){return new(e||i)};static \u0275cmp=a({type:i,selectors:[["app-login-page"]],decls:5,vars:0,consts:[[1,"page"]],template:function(e,p){e&1&&(t(0,"section",0)(1,"h1"),o(2,"Login"),n(),t(3,"p"),o(4,"Sign in to access your habit history."),n()())},styles:[".page[_ngcontent-%COMP%]{max-width:680px}"]})};export{s as LoginPageComponent};

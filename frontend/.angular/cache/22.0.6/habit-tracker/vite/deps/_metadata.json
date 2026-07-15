@@ -1,40 +1,52 @@
 {
-  "hash": "87db33bd",
-  "configHash": "8fa4dcfb",
+  "hash": "df64b72e",
+  "configHash": "ac546976",
   "lockfileHash": "b669dea8",
-  "browserHash": "73a55678",
+  "browserHash": "944689bb",
   "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "871b19c1",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "76fe637c",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "d30bc8ce",
+      "fileHash": "439eb303",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "ece89b0c",
+      "fileHash": "71199822",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "61c41966",
-      "needsInterop": false
-    },
-    "@angular/common": {
-      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
-      "file": "@angular_common.js",
-      "fileHash": "10a50c19",
+      "fileHash": "e0eac335",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-4BGWJVSS": {
-      "file": "chunk-4BGWJVSS.js"
+    "chunk-K3OMI2YQ": {
+      "file": "chunk-K3OMI2YQ.js"
     },
-    "chunk-DRN2Y2UT": {
-      "file": "chunk-DRN2Y2UT.js"
+    "chunk-TKO2ZJNG": {
+      "file": "chunk-TKO2ZJNG.js"
+    },
+    "chunk-TS6FQOJ5": {
+      "file": "chunk-TS6FQOJ5.js"
+    },
+    "chunk-Y24EOWGX": {
+      "file": "chunk-Y24EOWGX.js"
     },
     "chunk-KG2R5EBC": {
       "file": "chunk-KG2R5EBC.js"

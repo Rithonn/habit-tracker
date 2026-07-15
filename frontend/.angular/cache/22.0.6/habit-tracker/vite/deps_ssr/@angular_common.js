@@ -1,3 +1,4 @@
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   APP_BASE_HREF,
   AsyncPipe,
@@ -89,7 +90,7 @@ import {
   provideImgixLoader,
   provideNetlifyLoader,
   registerLocaleData
-} from "./chunk-TKO2ZJNG.js";
+} from "./chunk-RPQGODHY.js";
 import {
   BrowserPlatformLocation,
   DomAdapter,
@@ -99,11 +100,12 @@ import {
   getDOM,
   parseCookieValue,
   setRootDomAdapter
-} from "./chunk-Y24EOWGX.js";
+} from "./chunk-FUPZLDEA.js";
 import {
   DOCUMENT,
   IMAGE_CONFIG
-} from "./chunk-KG2R5EBC.js";
+} from "./chunk-UKZJL6QO.js";
+import "./chunk-6DU2HRTW.js";
 export {
   APP_BASE_HREF,
   AsyncPipe,

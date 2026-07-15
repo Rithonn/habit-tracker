@@ -53,6 +53,42 @@
 	font-weight: 700;
 }
 
+.api-health {
+	border: 1px solid var(--border);
+	background: var(--surface-alt);
+	color: var(--text);
+	border-radius: 999px;
+	padding: 0.35rem 0.65rem;
+	font: inherit;
+	font-size: 0.82rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.api-health.checking {
+	color: var(--muted);
+}
+
+.api-health.online {
+	background: rgba(36, 160, 88, 0.12);
+	border-color: rgba(36, 160, 88, 0.45);
+	color: #1a7a3f;
+}
+
+.app-shell.dark-theme .api-health.online {
+	color: #7ce1a9;
+}
+
+.api-health.offline {
+	background: rgba(214, 60, 60, 0.12);
+	border-color: rgba(214, 60, 60, 0.45);
+	color: #b12828;
+}
+
+.app-shell.dark-theme .api-health.offline {
+	color: #ff9f9f;
+}
+
 .nav {
 	display: flex;
 	gap: 0.75rem;

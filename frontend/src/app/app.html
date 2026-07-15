@@ -5,6 +5,25 @@
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/login" routerLinkActive="active">Login</a>
     </nav>
+    <button
+      type="button"
+      class="api-health"
+      [class.online]="apiHealthState() === 'online'"
+      [class.offline]="apiHealthState() === 'offline'"
+      [class.checking]="apiHealthState() === 'checking'"
+      (click)="checkApiHealth()"
+    >
+      API:
+      @if (apiHealthState() === 'checking') {
+        <span>Checking...</span>
+      }
+      @if (apiHealthState() === 'online') {
+        <span>Online</span>
+      }
+      @if (apiHealthState() === 'offline') {
+        <span>Offline</span>
+      }
+    </button>
   </header>
 
   <main class="content">
