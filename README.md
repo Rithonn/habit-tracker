@@ -9,6 +9,26 @@ This repository is organized into separate frontend and backend projects.
 
 ## Quick Start
 
+### Run Frontend + Backend Together
+
+From the repository root:
+
+1. `./dev-all.ps1`
+
+What it does:
+
+- Opens a new PowerShell window and starts the Go API from `backend` using `go run ./cmd/api`.
+- Starts the Angular frontend from `frontend` in your current terminal using `npm start`.
+
+How to stop:
+
+- Press `Ctrl+C` in the frontend terminal.
+- Close the backend PowerShell window (or press `Ctrl+C` there).
+
+If script execution is blocked in PowerShell:
+
+- `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
+
 ### Frontend
 
 1. `cd frontend`
