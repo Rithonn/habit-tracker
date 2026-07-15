@@ -47,3 +47,17 @@ If script execution is blocked in PowerShell:
 
 - Frontend and backend are intentionally decoupled for independent deployment.
 - For backend implementation roadmap, see [backend/README.md](./backend/README.md).
+
+## Go-Live Checklist
+
+The following items still need to be completed before the project is ready for production:
+
+- Replace placeholder and in-memory backend implementations with real database-backed repositories.
+- Wire real auth flows end to end: register, login, logout, token/session handling, and protected route enforcement.
+- Connect the frontend to the real API endpoints instead of local-only fallback data.
+- Move API base URLs, JWT settings, and CORS allowlists into environment-specific configuration.
+- Confirm Postgres migrations run cleanly in deployment and on fresh environments.
+- Add validation and error handling for all request payloads and user-facing failures.
+- Add integration or smoke tests for healthcheck, auth, habit CRUD, and journal save/load flows.
+- Add production logging, monitoring, and rate limiting for sensitive endpoints.
+- Verify deployment build and runtime settings for both frontend and backend.
