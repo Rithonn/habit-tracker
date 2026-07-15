@@ -1,0 +1,2 @@
+export default `html,body{margin:0;padding:0;min-height:100%}body{background:#f6f7fb}
+`;

@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS journal_entries;
+DROP TABLE IF EXISTS habit_entries;
+DROP TABLE IF EXISTS habits;
+DROP TABLE IF EXISTS users;
