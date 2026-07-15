@@ -7,6 +7,14 @@ This folder contains a Go API scaffold for the Habit Tracker app. It is designed
 - HTTP server entrypoint: `cmd/api/main.go`
 - Config loading from environment: `internal/config`
 - Router and CORS setup: `internal/server`
+- Structured request logging middleware (zerolog): `internal/http/middleware/logging.go`
+- JWT auth middleware with development fallback identity: `internal/http/middleware/auth.go`
+- Request payload validation helper (go-playground/validator): `internal/http/validate`
+- Feature slices with explicit boundaries:
+   - `internal/features/auth` (handler, service, repository)
+   - `internal/features/habits` (handler, service, repository)
+   - `internal/features/journal` (handler, service, repository)
+   - `internal/features/health` (health handler)
 - API routes:
   - `POST /api/v1/auth/register`
   - `POST /api/v1/auth/login`
@@ -20,11 +28,12 @@ This folder contains a Go API scaffold for the Habit Tracker app. It is designed
   - `GET /api/v1/health`
 - Placeholder handlers for auth, habits, and journal
 - Initial Postgres migrations in `migrations`
+- Migration workflow commands in `Makefile` via goose (`migrate-up`, `migrate-down`, `migrate-status`)
 - Local env template: `.env.example`
 
 ## Quick Start
 
-1. Install Go 1.22+
+1. Install Go 1.25+
 2. Copy env file:
    - `cp .env.example .env` (PowerShell: `Copy-Item .env.example .env`)
 3. Download dependencies:
@@ -71,6 +80,12 @@ This folder contains a Go API scaffold for the Habit Tracker app. It is designed
 4. Add structured logging and error monitoring.
 5. Add smoke tests for login + dashboard flows.
 
+## Why This Workflow
+
+A detailed explanation of the selected API workflow and wiring decisions is documented in:
+
+- [README_API_WORKFLOW_WIRING.md](./README_API_WORKFLOW_WIRING.md)
+
 ## Suggested Next Files To Implement
 
 - `internal/auth/service.go`
@@ -84,3 +99,8 @@ This folder contains a Go API scaffold for the Habit Tracker app. It is designed
 
 - The scaffold intentionally returns `501 Not Implemented` for most business endpoints until auth and data layers are wired.
 - Current Angular localStorage persistence can remain during transition and be removed after API integration is complete.
+
+## New To Go?
+
+- C#/.NET onboarding guide: [README_GO_FOR_DOTNET_DEVS.md](./README_GO_FOR_DOTNET_DEVS.md)
+- Go tips and practical cheatsheet: [README_GO_TIPS.md](./README_GO_TIPS.md)

@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -11,11 +10,13 @@ import (
 
 	"github.com/ritho/habit-tracker/backend-go/internal/config"
 	"github.com/ritho/habit-tracker/backend-go/internal/server"
+	"github.com/rs/zerolog"
 )
 
 func main() {
 	cfg := config.Load()
-	srv := server.New(cfg)
+	logger := zerolog.New(os.Stdout).With().Timestamp().Str("service", "habit-tracker-api").Logger()
+	srv := server.New(cfg, logger)
 
 	httpServer := &http.Server{
 		Addr:              ":" + cfg.Port,
@@ -24,9 +25,9 @@ func main() {
 	}
 
 	go func() {
-		log.Printf("api listening on :%s", cfg.Port)
+		logger.Info().Str("port", cfg.Port).Msg("api listening")
 		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("listen and serve failed: %v", err)
+			logger.Fatal().Err(err).Msg("listen and serve failed")
 		}
 	}()
 
@@ -38,6 +39,6 @@ func main() {
 	defer cancel()
 
 	if err := httpServer.Shutdown(ctx); err != nil {
-		log.Printf("graceful shutdown failed: %v", err)
+		logger.Error().Err(err).Msg("graceful shutdown failed")
 	}
 }
