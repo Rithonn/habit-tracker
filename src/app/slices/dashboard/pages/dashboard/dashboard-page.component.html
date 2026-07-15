@@ -1,0 +1,49 @@
+<section class="page">
+  <h1>Dashboard</h1>
+  @if (!selectedMonth()) {
+    <section class="current-month" aria-label="Current month quick access">
+      <div>
+        <p class="current-label">Current Month</p>
+        <h2>{{ currentMonthCard.label }}</h2>
+        <p class="current-meta">{{ completionSummary(currentMonthCard.value) }}</p>
+      </div>
+      <div class="current-actions">
+        <div class="current-progress-track" aria-hidden="true">
+          <div
+            class="current-progress-fill"
+            [style.width.%]="completionPercent(currentMonthCard.value)"
+          ></div>
+        </div>
+        <p class="current-percent">{{ completionPercent(currentMonthCard.value) }}%</p>
+        <button type="button" class="open-current" (click)="openMonth(currentMonthCard.value)">
+          Open {{ currentMonthCard.label }}
+        </button>
+      </div>
+    </section>
+
+    <p>Select a month card to open that month's habit matrix.</p>
+    <app-month-cards
+      [months]="months"
+      [summaryByMonth]="summaryByMonth()"
+      [percentByMonth]="percentByMonth()"
+      (open)="openMonth($event)"
+    />
+  } @else {
+    <app-monthly-habit-matrix
+      [monthLabel]="selectedMonthLabel()"
+      [dayNumbers]="dayNumbers()"
+      [journalCalendarDays]="journalCalendarDays()"
+      [categories]="categories"
+      [completedCount]="completedCount()"
+      [totalCells]="totalCells()"
+      [checkedLookup]="checkedLookup()"
+      [journalDay]="journalDay()"
+      [journalText]="activeJournalText()"
+      [journalDaysWithEntry]="journalDaysWithEntry()"
+      (back)="closeMonth()"
+      (toggled)="toggleDay($event)"
+      (journalDayChanged)="setJournalDay($event)"
+      (journalEntryUpdated)="updateJournalEntry($event)"
+    />
+  }
+</section>

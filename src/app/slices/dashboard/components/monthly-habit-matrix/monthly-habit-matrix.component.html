@@ -1,0 +1,80 @@
+<section class="controls" aria-label="Monthly habit controls">
+  <div class="month-heading">
+    <button class="back-btn" type="button" (click)="back.emit()">Back</button>
+    <h2>{{ monthLabel }}</h2>
+  </div>
+  <p class="summary">
+    Completed cells this month: <strong>{{ completedCount }}</strong> / {{ totalCells }}
+  </p>
+</section>
+
+<section class="journal-panel" aria-label="Daily journal entry">
+  <h3>Daily Journal Entry</h3>
+  <p class="journal-help">Write one sentence about your day for a selected date.</p>
+  <div class="journal-day-grid" role="group" aria-label="Pick a day to write your journal entry">
+    @for (label of weekdayLabels; track label) {
+      <span class="weekday-chip" aria-hidden="true">{{ label }}</span>
+    }
+
+    @for (day of journalCalendarDays; track $index) {
+      @if (day === null) {
+        <span class="journal-day-empty" aria-hidden="true"></span>
+      } @else {
+        <button
+          type="button"
+          class="journal-day-btn"
+          [class.selected]="day === journalDay"
+          [class.has-entry]="journalDaysWithEntry[day]"
+          (click)="onJournalDayClick(day)"
+          [attr.aria-label]="'Open journal for day ' + day"
+          [attr.aria-pressed]="day === journalDay"
+        >
+          {{ day }}
+        </button>
+      }
+    }
+  </div>
+  <label for="journal-text" class="journal-label">Entry for day {{ journalDay }}</label>
+  <textarea
+    id="journal-text"
+    rows="3"
+    [value]="journalText"
+    [attr.maxlength]="journalMaxLength"
+    (input)="onJournalTextChange($any($event.target).value)"
+    placeholder="Example: I felt focused and calm after my evening walk."
+  ></textarea>
+  <p class="char-count">{{ journalText.length }} / {{ journalMaxLength }}</p>
+</section>
+
+<section class="matrix-panel" aria-label="Monthly habit matrix">
+  <h3>Monthly Habit Matrix</h3>
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          @for (day of dayNumbers; track day) {
+            <th scope="col">{{ day }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (category of categories; track category.id) {
+          <tr>
+            <th scope="row">{{ category.name }}</th>
+            @for (day of dayNumbers; track day) {
+              <td>
+                <input
+                  type="checkbox"
+                  [checked]="checkedLookup[category.id + '|' + day] ?? false"
+                  (change)="onToggle(category.id, day, $any($event.target).checked)"
+                  [attr.aria-label]="category.name + ' day ' + day"
+                />
+              </td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

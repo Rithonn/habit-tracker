@@ -1,0 +1,12 @@
+<section class="month-grid" aria-label="Month selection">
+  @for (month of months; track month.value) {
+    <button class="month-card" type="button" (click)="open.emit(month.value)">
+      <span class="month-name">{{ month.label }}</span>
+      <span class="month-meta">{{ summaryByMonth[month.value] }}</span>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" [style.width.%]="percentByMonth[month.value] ?? 0"></div>
+      </div>
+      <span class="month-percent">{{ percentByMonth[month.value] ?? 0 }}%</span>
+    </button>
+  }
+</section>
